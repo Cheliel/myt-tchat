@@ -15,6 +15,8 @@ export const onMessageHandler = (e: any) => {
             const content = parts[1].trim();
             console.log('| Expéditeur :', sender);
             console.log('| Contenu du message :', content);
+          } else {
+            console.log("| message : ", message)
           }
     } 
     console.log("|")

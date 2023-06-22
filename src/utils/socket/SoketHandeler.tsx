@@ -6,9 +6,7 @@ export default class SocketHandeler {
     public static ws : WebSocket
 
     constructor(){
-  
-        // this.ws.on('message', this.onMessageHandler)
-        // this.ws.connect()
+
     }
 
     static connect(conn: WSConnecion){

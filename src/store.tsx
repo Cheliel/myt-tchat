@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import tokenReducer from './reducer/tokenReducer';
+import connexionState from './reducer/connexionReducer';
 
 
 const store = configureStore({
   reducer: {
-    characterState: tokenReducer
+    connexionState: connexionState
   }
 });
 

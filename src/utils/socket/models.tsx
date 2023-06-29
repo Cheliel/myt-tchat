@@ -2,7 +2,8 @@
 export interface ConnexionState {
     password: string,
     username: string,
-    channels: [string]
+    channels: [string],
+    isChatDisplayed : boolean
 }
 
 export interface WSConnecion {

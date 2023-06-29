@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import connexionState from './reducer/connexionReducer';
+import TChatReducer from './reducer/tchatsReducer';
 
 
 const store = configureStore({
   reducer: {
-    connexionState: connexionState
+    connexionState: connexionState,
+    TChatState: TChatReducer
   }
 });
 

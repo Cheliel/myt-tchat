@@ -1,5 +1,6 @@
 import { WSConnecion } from "./models";
 import { onMessageHandler } from "./messageHandeler";
+import store from "../../store";
 
 
 export default class SocketHandeler {
@@ -24,10 +25,21 @@ export default class SocketHandeler {
         SocketHandeler.ws.onclose = (e) => onMessageHandler(e)
 
         SocketHandeler.ws.onerror = (e) => onMessageHandler(e)
+
+    
     }
 
     static switchChannel(channel : string){
         SocketHandeler.ws.send(`JOIN ${channel}`);
+    }
+
+    static sendMessage(channels : string [], msg : string){
+        console.log("SENDING MESSAGE")
+        
+        channels.forEach((channel) => {
+            console.log(channel)
+            SocketHandeler.ws.send(`PRIVMSG #${channel} :${msg}`);
+          });
     }
 
 }

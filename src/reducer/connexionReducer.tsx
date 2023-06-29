@@ -5,8 +5,12 @@ import { ConnexionState } from '../utils/socket/models';
 const initialState: ConnexionState = { 
   password: "",
   username: "" ,
-  channels: ['thegreatreview']
+  channels: [''],
+  isChatDisplayed : false
 };
+
+//
+
 
 export const connexionState = createSlice({
   name: 'connexionState',
@@ -20,11 +24,14 @@ export const connexionState = createSlice({
    },
     setChannels : (state , action: PayloadAction<[string]>) => {
     return ({...state, channels : action.payload }); 
- }
+ },
+ setChatDisplay : (state , action: PayloadAction<boolean>) => {
+ return ({...state, isChatDisplayed : action.payload }); 
+}
   }
 });
 
 
 
-export const { setPassword, setUserName, setChannels } = connexionState.actions;
+export const { setPassword, setUserName, setChannels, setChatDisplay } = connexionState.actions;
 export default connexionState.reducer;

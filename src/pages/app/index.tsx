@@ -1,14 +1,15 @@
 import React from 'react';
 import Template from '../template';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AppContaner } from './styles';
 
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="App">
+      <AppContaner >
         <Template />
-      </div>
+      </AppContaner>
     </BrowserRouter>
   );
 }

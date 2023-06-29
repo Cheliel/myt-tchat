@@ -1,31 +1,61 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { WSConnecion } from '../../utils/socket/models';
 import SocketHandeler from '../../utils/socket/SoketHandeler';
+import { setChannels } from '../../reducer/connexionReducer';
+import { TChatConstructor } from '../../components/tchatBox/tchat/models';
+import { setTChat } from '../../reducer/tchatsReducer';
+import { setChatDisplay } from '../../reducer/connexionReducer';
+import { Message } from '../../components/tchatBox/message/model';
+import TChat from '../../components/tchatBox/tchat';
+import { Page } from './styles';
+import { InputChannelContaner } from './styles';
+import { Input, MyButton } from './styles';
+import TChatBox from '../../components/tchatBox';
+
+
 
 
 const Dashboard = () => {
 
   const connexion = useAppSelector((state => state.connexionState))
+  const dispatch = useAppDispatch()
+  const [channel, setChannel] = useState('')
+  const [isTChat, setIsTChat] = useState(false)
 
   const newConnection = () => {
-    SocketHandeler.connect(WSConnecion(connexion.password, connexion.username, connexion.channels))
-    console.log("Conn statu : ",SocketHandeler.ws.OPEN)
+    
+    if(SocketHandeler.ws && SocketHandeler.ws.OPEN){
+      SocketHandeler.ws.close()
+    }
+
+    dispatch(setTChat(channel))
+    SocketHandeler.connect(WSConnecion(connexion.password, connexion.username, [channel]))
+    console.log("Conn statu : ", SocketHandeler.ws.OPEN)
+    dispatch(setChatDisplay(true))
+
   }
 
-  const switchChannel = () => {
-    SocketHandeler.switchChannel('thegreatreview')
-    console.log("Conn statu : ",SocketHandeler.ws.OPEN)
-  }
+  useEffect(() => {
+    dispatch(setChannels([channel]))
+  }, [channel])
 
+
+ // oauth:ykvt9m0vs3fefk2eqyvrgfmffo2k3o
+ // danyetraz
 
   return (
-    <div>
-        <button onClick={() => newConnection()}>Start</button>
-        <button onClick={() => switchChannel()}>Channel</button>
-        helloworld -- check on the console ! 
-    </div>
+    <Page>
+      {connexion.isChatDisplayed ? (<TChatBox />) 
+      :(       
+      <InputChannelContaner>
+        <Input onChange={(e : any) => setChannel(e.target.value)} value={channel} type='text' placeholder='Channel'/>
+        <MyButton onClick={() => newConnection()}>Start</MyButton> 
+      </InputChannelContaner>
+      )}
+
+    </Page>
   );
 }
 

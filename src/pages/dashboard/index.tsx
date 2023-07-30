@@ -42,8 +42,8 @@ const Dashboard = () => {
   }, [channel])
 
 
- // oauth:ykvt9m0vs3fefk2eqyvrgfmffo2k3o
- // joueur_du_grenier
+ // oauth:uip8pebh9xgwfl52naak2hw3y23kh6
+ // thegreatreview
 
   return (
     <Page>

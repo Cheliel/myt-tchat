@@ -5,12 +5,22 @@ import { setUserName , setPassword } from '../../../reducer/connexionReducer';
 import MessageContaner from '../message';
 import { TChatContaner, TChatComponant } from './styles';
 import { Message } from '../message/model';
-import { List } from 'react-virtualized';
+import { List, Grid, WindowScroller } from 'react-virtualized';
+import { styledMessage } from './styles';
+import 'react-virtualized/styles.css';
 
 interface props {
   index : number,
   key: string,
-  style: {}
+  style: any
+}
+
+interface style {
+  height: number,
+  left: number,
+  position: string,
+  top: number,
+  width: string
 }
 
 
@@ -22,11 +32,11 @@ const TChat = () => {
     const listRef = useRef<List>(null);
     const [scroll, setScroll] = useState(true)
 
-    const rowRenderer = ({ index, key, style } : props) => {
-      const number = index + 1;
+    const cellRenderer = ({columnIndex, key, rowIndex, style} : any) => {
+      const number = rowIndex + 1;
 
       if(TChat && TChat?.messages){
-        const message = TChat.messages[index]
+        const message = TChat.messages[rowIndex]
         if(message){
           return (
             <div key={key} style={style}>
@@ -38,6 +48,36 @@ const TChat = () => {
         return null
       }
 
+      }
+
+      const setRowHeight = ( index: any ) : number => {
+        
+        
+        const i = index.index
+        if(TChat && TChat?.messages){
+          const message = TChat.messages[i]
+          if(message){
+            console.log(message)
+            console.log('message ?')
+            
+            const len = message.message.length + message.sender.length + 5
+            console.log('acttual len ==> ', len)
+            if(len > 280){return 200}
+
+            if(len > 210){return 140}
+
+            if(len > 150){return 110}
+
+            if(len > 110){return 80}
+
+            if(len >= 60){return 60}
+
+            if(len < 60){return 40}
+
+          }
+        }
+
+        return 80
       }
 
       useEffect(() => {
@@ -54,14 +94,21 @@ const TChat = () => {
       <TChatComponant>
         <TChatContaner  className="TChat">
           {TChat ? (
-            <List ref={listRef}
-                  width={300}
-                  height={400}
-                  rowCount={messagesLen}
-                  rowHeight={80}
-                  rowRenderer={rowRenderer}>
+            <WindowScroller>
+              {({ height, isScrolling, onChildScroll, scrollTop }) => (
+              <Grid
+                    width={420}
+                    height={500}
+                    columnWidth={390}
+                    rowCount={messagesLen}
+                    estimatedRowSize={40}
+                    rowHeight={(index) => setRowHeight(index)}
+                    columnCount={1}
+                    cellRenderer={cellRenderer}
+                    style={styledMessage}>
 
-            </List>
+              </Grid> )}
+            </WindowScroller>
           ) : (
             <div></div>
           )}

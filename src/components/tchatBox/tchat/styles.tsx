@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+export const styledMessage = {
+ 
+}
 
 export const TChatComponant = styled.div`
   height: 600px;

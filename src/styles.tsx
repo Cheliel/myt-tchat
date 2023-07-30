@@ -19,4 +19,14 @@ export const GlobalStyle = createGlobalStyle<DefaultTheme>`
     margin: 0;
     padding: 0;
  }
+
+
+ ReactVirtualized__Table {
+
+ }
+
+ ReactVirtualized__Table__row {
+  margin: 200px;
+ }
+
 `;

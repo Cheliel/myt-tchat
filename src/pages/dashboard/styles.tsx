@@ -8,9 +8,10 @@ export const Page = styled.div`
     align-content: center;
     justify-content: center;
     height: 100vh;
-    background-color: #82a1b1;
+    background-color: #0C151D;
 
 `;
+//background-color: #82a1b1;
 
 export const Input = styled.input`
     width: 60%;

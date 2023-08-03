@@ -7,7 +7,7 @@ export interface Message {
     index: string
 }
 
-export const Message = (
+export const getMessage = (
     sender: string, 
     message: string, 
     type: string, 

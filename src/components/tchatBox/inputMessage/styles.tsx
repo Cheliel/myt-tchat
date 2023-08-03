@@ -7,37 +7,46 @@ export const InputMessageContaner = styled.div`
     justify-content: space-around;
 
 
-    width: 350px;
+    width: 400px;
     border-radius: 14px;
-    background-color: #b1c5ce;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    background-color: #224459;
     padding: 10px;
-    margin: 50px;
+    margin: 5px;
 
 `;
 
 export const Input = styled.input`
-    width: 60%;
-    background-color: #ecf1f3;
+    width: 100%;
+    background-color: inherit;
     border: none;
     border-radius: 14px;
-    padding: 10px;
+    padding: 15px;
     font-size: 14px;
     margin: 5px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    color: #DDE7F8;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 1) 0px 5px 36px -7px inset;  border-radius: 14px;
+
+
     
     
     &:hover{
-        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;    }
+          
+      }
 
     &:focus {
         outline: none;
     }
 `;
 
-export const MyButton = styled.button`
+export const MyButton = styled.img`
 
- font-size: 10px;
+ font-size: 0.8em;
  height: 30px;
- width: 60px
+ width: 60px;
+ border-radius:14px;
+ &:hover{
+    cursor: pointer; 
+  }
+
+ 
 `;

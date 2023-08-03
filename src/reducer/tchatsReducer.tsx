@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ConnexionState } from '../utils/socket/models';
 import { Message } from '../components/tchatBox/message/model';
-import { TChat, TChatConstructor } from '../components/tchatBox/tchat/models';
+import { messageDisplayed, TChat, TChatConstructor } from '../components/tchatBox/tchat/models';
 import { stat } from 'fs';
 import _ from 'lodash';
 
@@ -26,6 +26,7 @@ const TChatReducer = (state = initialState, action: any):TChatsState => {
         const index = TChats.findIndex((c) => c.channel ===action.payload.channel)
         if(index != -1){
           const newMessages = TChats[index].messages.concat(action.payload)
+          messageDisplayed.push(action.payload)
           TChats[index].messages = newMessages
             return { ...state, TChats: TChats };
         }else {

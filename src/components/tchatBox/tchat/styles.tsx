@@ -1,47 +1,65 @@
 import styled from "styled-components";
 
-export const styledMessage = {
- 
-}
+
 
 export const TChatComponant = styled.div`
-  height: 600px;
-  width: 470px;
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: start;
+  background-color: #224459;
+  padding: 10px;
+  border-radius : 14px;
+  
 `;
+//box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 1) 0px 5px 36px -7px inset;  border-radius: 14px;
+// inner box shadow 
+//box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 1) 0px 5px 36px -7px inset;  border-radius: 14px;
 
 
 export const TChatContaner = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: space-around;
     
 
-    height: 600px;
-    width: 470px;
-    padding: 20px;
+display:inline-block;
+height: 600px;
+width: 450px;
+margin-bottom: 7px;
 
-    background-color: #b1c5ce;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    
-    overflow-y: scroll;
-    overflow-x: hidden;
-    scrollbar-width: thin;
+
+
+
+
+
+overflow-y: scroll;
+overflow-x: hidden;
+scrollbar-width: none;
+
+
+&::-webkit-scrollbar {
+    width: 6px;
+  }
   
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
 
-    &::-webkit-scrollbar {
-        width: 6px;
-      }
-      
-      &::-webkit-scrollbar-track {
-        background-color: transparent;
-      }
-      
-      &::-webkit-scrollbar-thumb {
-        background-color: transparent;
-      }
  
+`;
+
+export const TChatStyle = styled.ul`
+    
+ 
+    padding: 1px;
+    width:100%;
+    margin:0;
+
  
 `;
 

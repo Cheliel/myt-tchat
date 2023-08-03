@@ -1,7 +1,7 @@
 
 import store from "../../store"
 import { addMessage } from "../../reducer/tchatsReducer"
-import { Message } from "../../components/tchatBox/message/model"
+import { getMessage } from "../../components/tchatBox/message/model"
 
 export const onMessageHandler = (e: any) => {
 
@@ -18,7 +18,7 @@ export const onMessageHandler = (e: any) => {
             const {message, channel} = splitMessageChannel(content)
             // console.log('| Expéditeur :', sender);
             // console.log('| Contenu du message :', message);
-            store.dispatch(addMessage(Message(sender, message, e.type, channel, generateUniqueID(sender))))
+            store.dispatch(addMessage(getMessage(sender, message, e.type, channel, generateUniqueID(sender))))
           } else {
             console.log(" listen : ", data)
           }

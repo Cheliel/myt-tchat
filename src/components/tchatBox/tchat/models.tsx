@@ -14,3 +14,5 @@ export const TChatConstructor = (
     channel: channel
 })
 
+export const messageDisplayed : Message [] = []
+
